@@ -1,0 +1,460 @@
+@font-face {
+    font-family: 'CWDangamAsac-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/CWDangamAsac-Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Yeongdo-Rg';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2202-2@1.0/Yeongdo-Rg.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'RIDIBatang';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/RIDIBatang.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'TmonMonsori';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/TmonMonsori.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Cafe24SsurroundAir';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24SsurroundAir.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* --------------------------------------------------------- */
+* {
+    font-family: 'Cafe24SsurroundAir';
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    background: white;
+}
+
+#wrap {
+    min-height: 100%;
+    position: relative;
+}
+
+.intro,
+.intro a {
+    color: #fff;
+}
+
+.d-none {
+    display: none;
+}
+
+/* customizable snowflake styling */
+.snowflake {
+    color: #B2CCFF;
+    font-size: 2em;
+    font-family: Arial;
+    text-shadow: 0 0 1px #000;
+}
+
+@-webkit-keyframes snowflakes-fall {
+    0% {
+        top: -10%
+    }
+
+    100% {
+        top: 100%
+    }
+}
+
+@-webkit-keyframes snowflakes-shake {
+    0% {
+        -webkit-transform: translateX(0px);
+        transform: translateX(0px)
+    }
+
+    50% {
+        -webkit-transform: translateX(80px);
+        transform: translateX(80px)
+    }
+
+    100% {
+        -webkit-transform: translateX(0px);
+        transform: translateX(0px)
+    }
+}
+
+@keyframes snowflakes-fall {
+    0% {
+        top: -10%
+    }
+
+    100% {
+        top: 100%
+    }
+}
+
+@keyframes snowflakes-shake {
+    0% {
+        transform: translateX(0px)
+    }
+
+    50% {
+        transform: translateX(80px)
+    }
+
+    100% {
+        transform: translateX(0px)
+    }
+}
+
+.snowflake {
+    position: fixed;
+    top: -10%;
+    z-index: 9999;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: default;
+    -webkit-animation-name: snowflakes-fall, snowflakes-shake;
+    -webkit-animation-duration: 10s, 3s;
+    -webkit-animation-timing-function: linear, ease-in-out;
+    -webkit-animation-iteration-count: infinite, infinite;
+    -webkit-animation-play-state: running, running;
+    animation-name: snowflakes-fall, snowflakes-shake;
+    animation-duration: 10s, 3s;
+    animation-timing-function: linear, ease-in-out;
+    animation-iteration-count: infinite, infinite;
+    animation-play-state: running, running
+}
+
+.snowflake:nth-of-type(0) {
+    left: 1%;
+    -webkit-animation-delay: 0s, 0s;
+    animation-delay: 0s, 0s
+}
+
+.snowflake:nth-of-type(1) {
+    left: 10%;
+    -webkit-animation-delay: 1s, 1s;
+    animation-delay: 1s, 1s
+}
+
+.snowflake:nth-of-type(2) {
+    left: 20%;
+    -webkit-animation-delay: 6s, .5s;
+    animation-delay: 6s, .5s
+}
+
+.snowflake:nth-of-type(3) {
+    left: 30%;
+    -webkit-animation-delay: 4s, 2s;
+    animation-delay: 4s, 2s
+}
+
+.snowflake:nth-of-type(4) {
+    left: 40%;
+    -webkit-animation-delay: 2s, 2s;
+    animation-delay: 2s, 2s
+}
+
+.snowflake:nth-of-type(5) {
+    left: 50%;
+    -webkit-animation-delay: 8s, 3s;
+    animation-delay: 8s, 3s
+}
+
+.snowflake:nth-of-type(6) {
+    left: 60%;
+    -webkit-animation-delay: 6s, 2s;
+    animation-delay: 6s, 2s
+}
+
+.snowflake:nth-of-type(7) {
+    left: 70%;
+    -webkit-animation-delay: 2.5s, 1s;
+    animation-delay: 2.5s, 1s
+}
+
+.snowflake:nth-of-type(8) {
+    left: 80%;
+    -webkit-animation-delay: 1s, 0s;
+    animation-delay: 1s, 0s
+}
+
+.snowflake:nth-of-type(9) {
+    left: 90%;
+    -webkit-animation-delay: 3s, 1.5s;
+    animation-delay: 3s, 1.5s
+}
+
+/* Demo Purpose Only*/
+.demo {
+    font-family: 'Raleway', sans-serif;
+    color: #fff;
+    display: block;
+    margin: 0 auto;
+    padding: 15px 0;
+    text-align: center;
+}
+
+.demo a {
+    font-family: 'Raleway', sans-serif;
+    color: #000;
+}
+
+.logo {
+    line-height: 150px;
+    width: 800px;
+    font-family: 'CWDangamAsac-Bold';
+    font-size: 70px;
+    text-decoration-line: none;
+    color: white;
+    text-align: center;
+    text-shadow: 6px 4px 1px rgb(130, 138, 255);
+}
+
+.banner {
+    z-index: 2;
+    height: 150px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #B2CCFF;
+    text-align: center;
+    border-bottom-left-radius: 100%
+}
+
+.banner2 {
+    min-height: 100%;
+    position: relative;
+    padding-bottom: 60px;
+
+    height: 200px;
+    width: 100px !important;
+    z-index: 3 !important;
+    position: fixed !important;
+    top: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+}
+
+.index-padding {
+    /* min-height: 100%; */
+    position: relative;
+    padding-bottom: 60px;
+}
+
+li {
+    list-style-type: none;
+}
+
+.div-padding {
+    padding: 200px 100px 50px 100px;
+}
+
+.card-padding {
+    padding: 100px 150px 50px 150px;
+}
+
+.comment-padding {
+    padding: 0 200px 50px 200px;
+}
+
+#worldCup {
+    position: fixed;
+    top: 65px;
+    right: 295px;
+    text-decoration-line: none;
+    color: white;
+    font-weight: bold;
+
+}
+
+#openchat {
+    position: fixed;
+    top: 65px;
+    right: 220px;
+    text-decoration-line: none;
+    color: white;
+    font-weight: bold;
+
+}
+
+#train {
+    position: fixed;
+    top: 65px;
+    right: 410px;
+    text-decoration-line: none;
+    color: white;
+    font-weight: bold;
+
+}
+
+#community {
+    position: fixed;
+    top: 65px;
+    right: 500px;
+    text-decoration-line: none;
+    color: white;
+    font-weight: bold;
+
+}
+
+#mypage {
+    position: fixed;
+    top: 65px;
+    right: 125px;
+    text-decoration-line: none;
+    color: white;
+    font-weight: bold;
+
+}
+
+/* .myPage {
+    position: fixed;
+    top: 65px;
+    right: 150px;
+    text-decoration-line: none;
+    color: white;
+} */
+
+#login {
+    position: fixed;
+    top: 65px;
+    right: 50px;
+    text-decoration-line: none;
+    color: white;
+    font-weight: bold;
+
+}
+
+#logout {
+    position: fixed;
+    top: 65px;
+    right: 50px;
+    text-decoration-line: none;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.toggle {
+    position: fixed;
+    top: 65px;
+    right: 50px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    display: none;
+    text-align: center;
+}
+
+@media all and (max-width:1480px) {
+    .toggle {
+        display: block;
+    }
+
+    .gnb {
+        text-align: center;
+    }
+
+    #header,
+    #community,
+    #worldCup,
+    #login,
+    #train,
+    #logout,
+    #mypage,
+    #openchat {
+        display: none;
+    }
+
+    #header {
+        display: grid;
+        padding: 0px;
+        height: 0px;
+        margin-top: auto;
+        margin-bottom: auto;
+        background: linear-gradient(to bottom, rgb(250, 250, 255), #abc1f1);
+    }
+
+    /* #header .gnb {
+        display: grid !important;
+        grid-template-rows: 30px 30px 30px 30px;
+      } */
+    #community,
+    #worldCup,
+    #login,
+    #train,
+    #logout,
+    #mypage,
+    #openchat,
+    a {
+        position: static !important;
+    }
+}
+
+.btn {
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+}
+
+.btn2 {
+    width: 100px;
+    height: 80px;
+    border-radius: 10px;
+    border: none;
+}
+
+.btn3 {
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+    border: none;
+}
+
+.copyright {
+    position: relative;
+    transform: translatY(-100%);
+    width: 100%;
+    bottom: 0;
+    background-color: rgb(0, 0, 0);
+    font-size: 15px;
+    color: white;
+    padding: 30px;
+}
+
+.copyright-title {
+    padding: 0px 0px 40px 30px;
+    width: fit-content;
+}
+
+.copyright-info {
+    padding: 0px 0px 40px 30px;
+    width: fit-content;
+}
+
+.copyright-info2 {
+    margin-left: 10px;
+    font-size: 10px;
+    padding: 20px;
+    width: fit-content;
+}

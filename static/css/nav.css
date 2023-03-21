@@ -1,0 +1,98 @@
+  .header .gnb {
+    margin: 0;
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 60%;
+    list-style-type: none;
+    width: 40%;
+    background: rgba(128, 128, 128, 0.4);
+  }
+  
+
+  
+  .header .toggle {
+    float: right;
+    width: 40px;
+    padding-top: 10px;
+    cursor: pointer;
+  }
+  
+  .header .toggle span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background: #000;
+  }
+  
+  .header .toggle span:nth-child(2) {
+    margin: 7px 0;
+  }
+  
+  /* 태블릿용 CSS */
+  
+  @media all and (min-width:768px) {
+    .header {
+      display: grid;
+      grid-template-columns: 30% 70%;
+      padding: 0px;
+      height: auto;
+      margin-top: auto;
+      margin-bottom: auto;
+      background: #808080;
+    }
+    .header .logo {
+      padding: 10px 20px;
+      padding-left: 30px;
+    }
+    .header nav {
+      margin-left: 0px;
+      margin-right: 0px;
+      padding-left: 0px;
+      margin-right: 0px;
+      margin-top: auto;
+      margin-bottom: auto;
+      width: 100%;
+    }
+    .header .gnb {
+      /* !important 없으면 btn 접었을 시 display:none되어 gnb가 표시되지 않음 */
+      display: grid !important;
+      display: block;
+      height: 100%;
+      grid-template-columns: 15% 15% 15% 15% 15%;
+      position: static;
+      width: auto;
+      background: none;
+    }
+    .header .gnb li {
+      float: left;
+      margin-top: auto;
+      margin-bottom: auto;
+      margin-left: 10px;
+      margin-right: 10px;
+      border-bottom: 0;
+    }
+    .header .gnb li a {
+      color: #fff;
+      padding: 0;
+      font-size: 18px;
+    }
+    .header .toggle {
+      display: none;
+    }
+  }
+  
+  /* 컴퓨터용 CSS */
+  
+  @media all and (min-width:1132px) {
+    .header {
+      grid-template-columns: 20% 80%;
+    }
+    .header .logo {
+      padding: 10px 20px;
+      padding-left: 50px;
+    }
+    .header .gnb li a {
+      font-size: 20px;
+    }
+  }

@@ -1,0 +1,99 @@
+<div class="banner2">
+  <img src="../static/img/avatar2.png" class="ski" alt="">
+</div>
+<div class=" banner">
+  
+  <span style="width: 100px; height: 20; color: white; font-weight: bold;">겨울에도</span>
+  <a href="/" class="logo" title="여행어때">여행어때</a>
+  <header id="header">
+    <div id="wrap">
+      <nav>
+        <ul class="gnb">
+          <li><a href="/post/view_search" id="community" class="community">커뮤니티</a></li>
+          <li><a href="/train" id="train" class="train">열차시간표</a></li>
+          <li><a href="/worldCup" id="worldCup" class="worldCup">여행지 월드컵</a></li>
+          <li><a href="/user/login" id="login" class="login">로그인</a></li>
+          <li><a href="/chat" id="openchat" class="openchat">오픈채팅</a></li>
+          <li><a href="/user/modify" id="mypage" class="mypage">마이페이지</a></li>
+          <li><a id="logout" class="logout">로그아웃</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <span class="toggle" onclick="menu()">
+    MENU
+  </span>
+</div>
+
+<div class="snowflakes" aria-hidden="true">
+  <div class="snowflake">❅</div>
+  <div class="snowflake">❅</div>
+  <div class="snowflake">❆</div>
+  <div class="snowflake">❄</div>
+  <div class="snowflake">❅</div>
+  <div class="snowflake">❆</div>
+  <div class="snowflake">❄</div>
+  <div class="snowflake">❆</div>
+  <div class="snowflake">❆</div>
+  <div class="snowflake">❄</div>
+</div>
+
+<script>
+function menu(){
+  var header = document.getElementById("header");
+  var community = document.getElementById("community");
+  var train = document.getElementById("train");
+  var worldCup = document.getElementById("worldCup");
+  var login = document.getElementById("login");
+  var mypage = document.getElementById("mypage");
+  var openchat = document.getElementById("openchat");
+  var logout = document.getElementById("logout");
+
+  if (header.style.display == 'none' || header.style.display === "")
+  { header.style.display = "block";
+  header.style.height = "auto";
+  community.style.display = "block";
+  worldCup.style.display = "block";
+  train.style.display = "block";
+  login.style.display = "block";
+  mypage.style.display = "block";
+  openchat.style.display = "block";
+  logout.style.display = "block";
+} else {
+  header.style.display = "none";
+  header.style.height = "0px";
+  community.style.display = "none";
+  worldCup.style.display = "none";
+  train.style.display = "none";
+  login.style.display = "none";
+  mypage.style.display = "none";
+  openchat.style.display = "none";
+  logout.style.display = "none";
+}
+console.log('hiu');
+} 
+
+  if ('<%=islogin%>' == 'true') {
+    document.querySelector(".login").classList.add('d-none');
+    document.querySelector(".logout").classList.remove('d-none');
+    document.querySelector(".mypage").classList.remove('d-none');
+    document.querySelector(".openchat").classList.remove('d-none');
+  } else {
+    document.querySelector(".logout").classList.add('d-none');
+    document.querySelector(".mypage").classList.add('d-none');
+    document.querySelector(".openchat").classList.add('d-none');
+  }
+
+  document.querySelector('.logout').addEventListener('click', () => {
+    if ('<%=iskakao%>' == 'true') {
+      document.location.href = '/user/logout/kakao'
+    } else {
+      axios({
+        method: 'delete',
+        url: '/user/logout',
+      }).then((res) => {
+        document.location.href = '/';
+      })
+    }
+  })
+</script>

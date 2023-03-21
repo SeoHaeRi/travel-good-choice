@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>커뮤니티 | 여행어때</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+    crossorigin="anonymous"></script>
+  <link rel="shortcut icon" href="../static/img/favicon.ico">
+  <link rel="stylesheet" type="text/css" href="../static/css/common.css">
+  <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+  <script type="text/javascript" src="../static/js/contents.js"></script>
+  <script type="text/javascript" src="../static/js/community.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+    function modify() {
+      var form = document.getElementById("contents-modify-form")
+      const formData = new FormData();
+      const file = document.getElementById("file")
+      formData.append('title', form.title.value);
+      formData.append('star', form.star.value);
+      formData.append('content', form.content.value);
+      formData.append('region', form.region.value);
+      formData.append('index_number', form.index_number.value);
+      formData.append('userid', form.userid.value);
+      formData.append('modify_file', file.files[0]);
+
+      axios({
+        method: "patch",
+        url: "/post/modify",
+        data: formData
+      })
+        .then((res) => {
+          console.log("알이에스:", res.data)
+          var region1 = document.querySelector(".region")
+          var star1 = document.querySelector(".star")
+          var img1 = document.getElementById("img")
+          var title1 = document.getElementById("title")
+          var maintext1 = document.getElementById("maintext")
+          if (res.data) {
+            console.log(res.data.file)
+
+            region1.innerText = form.region.value
+            star1.innerText = form.star.value
+            img1.setAttribute("src", "../contents/" + res.data.file);
+            title1.innerText = form.title.value
+            maintext1.innerText = form.content.value
+          }
+        })
+    }
+    function del_contents() {
+      var form = document.getElementById("contents-modify-form")
+      const formData = new FormData();
+      const file = document.getElementById("file")
+      axios({
+        method: "delete",
+        url: "/post/del_contents",
+        data:
+        {
+          index_number: form.index_number.value
+        }
+      })
+        .then(() => {
+          if (true) {
+            alert("글삭제가 완료되었습니다.")
+            window.location.href = "/post/view_search"
+          }
+        })
+    }
+    // 댓글 append
+    function makeComment(comment, type, firstCommentBox) {
+      let date = new Date(`${comment.updatedAt}`);
+      date = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate() + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+      if (type == '1') {
+        $("#comments").append(
+          `<div class="first-comment">
+            <img class="comment-img" src="${comment.img}">
+            <a class="comment-name">${comment.name}</a>
+            <span>${comment.content}</span>
+            <div class="comment-form">
+              <span>${date}</span>
+              <br>
+              <a onclick="viewSecCommentInput(comment.comment_id, this)">답글달기</a>
+              </div>
+              </div>
+              `)
+      } else {
+        $(firstCommentBox).append(
+          `<div class="second-comment">
+            <img class="comment-img" src="${comment.img}">
+            <a class="comment-name">${comment.name}</a>
+            <span>${comment.content}</span>
+            <div class="comment-form">
+              <span>${date}</span>
+              </div>
+              </div>
+              `)
+      }
+    }
+    // 댓글 등록 함수
+    function commentOn() {
+      const content = document.getElementById("comment-box");
+      if ('<%=islogin%>' == 'true' && content.value) {
+        axios({
+          method: 'post',
+          url: '/post/addComment',
+          data: {
+            post_id: '<%=data.index_number%>',
+            content: content.value
+          }
+        }).then((res) => {
+          makeComment(res.data, '1');
+          content.value = '';
+        })
+      } else if ('<%=islogin%>' == 'false') {
+        alert("로그인이 필요합니다")
+      } else {
+        alert("내용을 입력해주세요")
+      }
+    }
+
+
+    // 대댓글 등록 함수
+    function viewSecCommentInput(comment_id, element) {
+      let secComment = element.parentElement.parentElement;
+      $(secComment).append(`<form class="second comment-form">
+        <textarea class="comment-box" name="content" placeholder="내용을 입력해주세요."></textarea>
+        <button class="btn table-btn" type="button" onclick="secCommentOn(${comment_id}, this)">댓글</button>
+      </form>`)
+    }
+    function secCommentOn(comment_id, element) {
+      let secForm = element.parentElement;
+      let firstCommentBox = secForm.parentElement.parentElement;
+
+      const content = secForm.content;
+      if ('<%=islogin%>' == 'true' && content.value) {
+        axios({
+          method: 'post',
+          url: '/post/addSecComment',
+          data: {
+            comment_id: comment_id,
+            post_id: '<%=data.index_number%>',
+            content: content.value
+          }
+        }).then((res) => {
+          makeComment(res.data, '2', firstCommentBox);
+          content.value = '';
+          $(".second.comment-form").remove();
+        })
+      } else if ('<%=islogin%>' == 'false') {
+        alert("로그인이 필요합니다")
+      } else {
+        alert("내용을 입력해주세요")
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <div id="wrap">
+    <%-include( './header.ejs' , {islogin, iskakao})%>
+    <div class="div-padding">
+      <div class="card mx-auto">
+        <table style="text-align: center;">
+          <tr>
+            <th>글번호</th>
+            <th>제목</th>
+            <th>작성자</th>
+            <th>지역</th>
+            <th>별점</th>
+            <th>작성시간</th>
+          </tr>
+          <hr>
+          <tr>
+            <td>
+              <%=data.index_number%>
+            </td>
+            <td id="title">
+              <%=data.title%>
+            </td>
+            <td>
+              <%=data.writer%>
+            </td>
+            <td class="region">
+              <%=data.region%>
+            </td>
+            <td class="star">
+              <%=data.star%>
+            </td>
+            <td>
+              <%=data.updatedAt%>
+            </td>
+          </tr>
+        </table>
+        <hr>
+        <% if (data.img) {%>
+        <img id="img" src="../contents/<%=data.img%>" class="card-img-top w-50 mx-auto" alt="<%=data.title%> 글의 이미지">
+        <hr>
+        <% } %>
+
+        <div class="card-body">
+          <p id="maintext" class="card-text">
+            <%=data.maintext%>
+          </p>
+        </div>
+        <div class="card-body d-flex justify-content-end">
+          <!-- -------------------------------------------글 수정 버튼----------------------------------------------------- -->
+          <button type="button" id="modify_btn" class="btn table-btn" data-bs-toggle="modal"
+            data-bs-target="#exampleModal">
+            글수정
+          </button>
+          <button type="button" id="del_btn" class="btn table-btn" data-bs-dismiss="modal"
+            onclick="del_contents()">글삭제</button>
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">글 작성하기</h1>
+                </div>
+                <div class="modal-body">
+                  <form id="contents-modify-form" class="community-form">
+                    <input type="hidden" name="index_number" value="<%=data.index_number%>">
+                    <input type="hidden" name="userid" value="<%=data.userid%>">
+                    제목
+                    <br>
+                    <input type="text" id="title" name="title" placeholder="제목을 입력해주세요." value="<%=data.title%>">
+                    <br>
+                    <input type="radio" class="star" name="star" value="★" id="1">★
+                    <input type="radio" class="star" name="star" value="★★" id="2">★★
+                    <input type="radio" class="star" name="star" value="★★★" id="3">★★★
+                    <input type="radio" class="star" name="star" value="★★★★" id="4">★★★★
+                    <input type="radio" class="star" name="star" value="★★★★★" id="5">★★★★★
+                    <input type="text" id="region" name="region" placeholder="지역 ex)서울, 경주" value="<%=data.region%>">
+                    <br>
+                    내용
+                    <br>
+                    <textarea name="content" id="content" cols="30" rows="10" placeholder="내용을 입력해주세요."
+                      value="<%=data.maintext%>"><%=data.maintext%></textarea>
+                    <br>
+                    이미지
+                    <input type="file" name="modify_file" id="file">
+                    <div class="modal-footer">
+                      <button type="reset" class="btn cancle-btn" data-bs-dismiss="modal">취소</button>
+                      <button type="button" class="btn table-btn" data-bs-dismiss="modal" onclick="modify()">수정</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <a href="/post/view_search" class="btn table-btn">글목록</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- -------------------------------------------댓글----------------------------------------------------- -->
+    <div class="mx-auto comment-padding" style="justify-content: center;">
+      <h6>Comment</h6>
+      <!-- -------------------------------첫댓----------------------------------------- -->
+      <div id="comments">
+        <%for(let i=0; i <comment.length; i++) {%>
+        <div class="firstcomment-box">
+
+          <div class="first-comment">
+            <img class="comment-img" src="<%=comment[i].img%>">
+            <a class="comment-name">
+              <%=comment[i].name%>
+            </a>
+            <span>
+              <%=comment[i].content%>
+            </span>
+            <div class="comment-form">
+              <span>
+                <%=comment[i].updatedAt%>
+              </span>
+              <br>
+              <a onclick="viewSecCommentInput('<%=comment[i].comment_id%>', this)">답글달기</a>
+            </div>
+          </div>
+
+          <%for(let j=0; j <secComment.length; j++) {%>
+          <%if(secComment[j].foreign_comment_id==comment[i].comment_id) {%>
+          <div class="second-comment">
+            <img class="comment-img" src="<%=secComment[j].img%>">
+            <a class="comment-name">
+              <%=secComment[j].name%>
+            </a>
+            <span>
+              <%=secComment[j].content%>
+            </span>
+            <div class="comment-form">
+              <span>
+                <%=secComment[j].updatedAt%>
+              </span>
+            </div>
+          </div>
+          <%}%>
+        <%}%>
+        </div>
+        <%}%>
+      </div>
+
+      <!-- ------------------------댓글입력양식------------------------- -->
+      <form class="comment-form">
+        <textarea class="comment-box" id="comment-box" name="content" placeholder="내용을 입력해주세요."></textarea>
+        <br>
+        <button class="btn table-btn" type="button" onclick="commentOn()">댓글</button>
+      </form>
+    </div>
+    </div>
+
+    <!-- ---------------------------------------------------------------------------------------------- -->
+  </div>
+  <%-include( './footer.ejs' )%>
+        <script>
+          var form = document.getElementById("contents-modify-form")
+          if ('<%=kakao%>' == form.userid.value || '<%=user%>' == form.userid.value) {
+            document.querySelector("#modify_btn").classList.remove('d-none');
+            document.querySelector("#del_btn").classList.remove('d-none');
+          } else {
+            document.querySelector("#modify_btn").classList.add('d-none');
+            document.querySelector("#del_btn").classList.add('d-none');
+          }
+        </script>
+
+</body>
+
+</html>

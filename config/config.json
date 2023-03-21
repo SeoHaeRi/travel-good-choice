@@ -1,0 +1,17 @@
+{
+  "development": {
+    "host": "localhost",
+    "database": "travel",
+    "username": "user",
+    "password": "sba123$",
+    "dialect": "mysql",
+    "timezone": "Asia/Seoul"
+  },
+  "production": {
+    "host": "localhost",
+    "database": "travel",
+    "username": "user",
+    "password": "sba123",
+    "dialect": "mysql"
+  }
+}

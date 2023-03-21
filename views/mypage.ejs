@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마이페이지 | 여행어때</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/8132c83a04.js" crossorigin="anonymous"></script>
+    <!-- modal -->
+    <link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-material-ui/material-ui.css" rel="stylesheet">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+    <!-- css -->
+    <link rel="stylesheet" href="../static/css/mypage.css" />
+    <link rel="stylesheet" href="../static/css/style.css" />
+    <link rel="stylesheet" href="../static/css/common.css" />
+
+    <script>
+        //  function uploadFile( obj ){
+        //     var formData = new FormData();
+        //     formData.append("name", uploadedFile);
+        //     formData.append('profileImg', obj.files[0]);
+
+        //     axios({
+        //         method:'post',
+        //         url: "/user/upload",
+        //         data: formData,
+        //     })
+        //     .then((req) => { return req.data;})
+        //     .then((data) => {
+        //         uploadedFile = data.fileName;
+        //         $("#uploadedProfile").css({"background-image":`url(/static/upload_img/${data.fileName})`}); 
+        //         $("#uploadedProfile").css({"background-size":`70px 70px`}); 
+        //     })
+        // }
+            function goModify() {
+                document.location.href="/user/mypage";
+            }
+            function goHome() {
+            document.location.href="/";
+            }
+            
+
+            // // 닉네임 확인 폼 작성
+            // function checkNickname( obj ) {
+            //         axios({
+            //             method: "post",
+            //             url: "user/mypage/isName",
+            //             data: {
+            //                 name: obj.value,
+            //             }
+            //         }).then((req) => { 
+            //             return req.data;
+            //         }).then((data) => {
+            //             console.log(data);
+            //             if ( data ) {
+            //                 $("#checkNickname_text").css("color", "green");
+            //                 $("#checkNickname_text").text("사용할 수 있는 닉네임입니다.");
+            //                 $( "button" ).removeAttr("disabled")
+            //             } else {
+            //                 $("#checkNickname_text").css("color", "red");
+            //                 $("#checkNickname_text").text("사용할 수 없는 닉네임입니다.");
+            //                 $( "button" ).attr("disabled", "true");
+            //             } 
+            //         });
+            //     }
+
+            /* 비밀번호 확인 */
+            function pwCheck() {
+                if(document.getElementById('pw').value !='' && document.getElementById('pwConfirm').value!=''){
+                    if(document.getElementById('pw').value==document.getElementById('pwConfirm').value){
+                        document.getElementById('check').innerHTML='비밀번호 일치'
+                        document.getElementById('check').style.color='rgb(54, 54, 255)';
+                    }
+                    else{
+                        document.getElementById('check').innerHTML='비밀번호가 일치하지 않습니다';
+                        document.getElementById('check').style.color='rgb(255, 89, 89)';
+                    }
+                }
+            }
+            /* 데이터 유효성 검사 alert */
+            function checkData () {
+                var form = document.getElementById("modify_info");
+
+                if (form.name.value == '' ) {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: '낙네임을 입력해주세요!',
+                        text: '9글자 이내',
+                    })
+                    return false;
+                }
+
+                if (form.pw.value == '') {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: '비밀번호를 입력해주세요!',
+                        text: '39글자 이내',
+                    })
+                    return false;
+                }
+                if (form.checkPw.value == '') {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: '비밀번호 확인해주세요!',
+                        text: '39글자 이내',
+                    })
+                    return false;
+                }
+                return true;
+            }
+            function TrueCase() {
+        }   
+    </script>  
+</head>
+<body>
+    <div class="login-div">
+        <div onclick="goHome()">
+            <a href="/" class="login-logo" title="여행어때">여행어때</a>
+        </div>
+        <div onclick="goModify()">
+            <i class="fa-solid fa-user">&nbsp;&nbsp;
+                <a href="/user/modify">비밀번호수정</a>
+            </i>
+        </div>
+
+    </div>
+
+        
+</body>
+</html>

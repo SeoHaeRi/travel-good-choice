@@ -1,0 +1,25 @@
+.search_input {
+    position: relative;
+    text-align: center;
+    width: 70%;
+    ;
+    height: 40px;
+}
+
+.card_img {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+
+}
+
+.card {
+    max-width: 90rem;
+}
+
+.card-img-top {
+    width: 30%;
+    height: 30%;
+    display: block;
+    margin: auto
+}

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>회원가입 | 여행어때</title>
+  <link rel="shortcut icon" href="../static/img/favicon.ico">
+  <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+  <link rel="stylesheet" type="text/css" href="../static/css/common.css">
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+  <div class="snowflakes" aria-hidden="true">
+    <div class="snowflake">❅</div>
+    <div class="snowflake">❅</div>
+    <div class="snowflake">❆</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❅</div>
+    <div class="snowflake">❆</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❆</div>
+    <div class="snowflake">❆</div>
+    <div class="snowflake">❄</div>
+  </div>
+
+  <form class="signup-form">
+    <a href="/" class="login-logo" title="여행어때">여행어때</a>
+    <br>
+    <span class="signup-p">안녕하세요. <br>여행어때에 오신 것을 환영합니다.</span>
+    <h6>국내여행 NO.1 플랫폼 여행어때</h6>
+    <span id="exa" style="color: red;"></span>
+    <br>
+    <br>
+    <input class="login-input" type="text" name="id" placeholder="아이디" maxlength='40'>
+    <br>
+    <br>
+    <input class="login-input" type="password" name="pw" placeholder="비밀번호" maxlength='20'>
+    <br>
+    <br>
+    <input class="login-input" type="text" name="name" placeholder="닉네임" maxlength="10">
+    <br>
+    <br>
+    <div id="profile-div">
+      <span id="profile">&nbsp&nbsp&nbsp프로필 사진 : &nbsp&nbsp</span>
+      <div id="preview"><img id="preview-img" class="comment-img"></div>
+      <input type="file" id="profileImg" name="profileImg" placeholder="프로필" accept="image/*"
+        onchange="handleFiles(this)">
+    </div>
+    <br>
+    <br>
+    <button type="button" class="login-btn" onclick="signUp();">회원가입</button>
+  </form>
+
+  <!-- script -->
+  <script>
+    function handleFiles(input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+          document.getElementById('preview-img').src = e.target.result;
+        };
+        reader.readAsDataURL(input.files[0]);
+
+      } else {
+        document.getElementById('preview-img').src = "";
+      }
+    }
+
+    function signUp() {
+      let form = document.querySelector(".signup-form");
+      const formData = new FormData();
+      const file = document.getElementById("profileImg");
+      formData.append('id', form.id.value);
+      formData.append('pw', form.pw.value);
+      formData.append('name', form.name.value);
+      formData.append('userfile', file.files[0]);
+
+      axios({
+        method: 'post',
+        url: '/user/signup',
+        data: formData,
+        headers: {
+          'Content-Type': 'multipart/form-data' // enctype
+        }
+      }).then((res) => {
+        if (res.data) {
+          form.id.value = "";
+          form.pw.value = "";
+          form.name.value = "";
+          alert('회원가입 성공!');
+          document.location.href = "/user/login";
+        } else {
+          var exa = document.getElementById('exa');
+          exa.innerText = "회원가입 실패! 중복된 아이디 또는 닉네임입니다!";
+          form.reset();
+        }
+      })
+    }
+  </script>
+</body>
+
+</html>

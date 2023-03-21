@@ -1,0 +1,63 @@
+.cho-btn {
+    border-color: white;
+    background: #4d5566;
+    color: white;
+    height: 30px;
+    width: 100px;
+    font-family: 'RIDIBatang';
+}
+.train-btn {
+    border-color: white;
+    background: #B2CCFF;
+    color: white;
+    height: 30px;
+    width: 100px;
+    font-family: 'RIDIBatang';
+}
+.station-btn {
+    border-color: white;
+    background: #82acff;
+    color: white;
+    height: 30px;
+    width: 100px;
+    font-family: 'RIDIBatang';
+}
+#station {
+    text-align: center;
+    margin: 20px 100px 20px 100px ;
+}
+#station2 {
+    text-align: center;
+    margin: 20px 100px 20px 100px ;
+    text-align:center;
+    background-color: rgb(206, 222, 253);
+    color: white;
+}
+.table-padding {
+    padding: 50px 100px 50px 100px;
+}
+.index-padding {
+    min-height: 100%;
+    position: relative;
+    padding-bottom: 60px;
+
+    padding: 200px 100px 2px 100px;
+
+}
+#regionlist {
+    padding: 0px 0px 10px 0px;
+}
+.search-btn {
+    border-color: white !important;
+    background: #B2CCFF !important;
+    color: white !important;
+    height: 30px !important;
+    width: 100px !important;
+    font-family: 'RIDIBatang' !important;
+}
+
+#start, #end {
+    text-align: center;
+    background-color:rgb(255, 217, 217);
+    border: none;
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>채팅</title>
+  <link rel="stylesheet" href="../static/css/chat.css">
+  <link rel="stylesheet" href="../static/css/common.css">
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="../static/js/chat.js"></script>
+  <link rel="shortcut icon" href="../static/img/favicon.ico">
+</head>
+
+<body>
+  <div class="banner2">
+    <img src="../static/img/avatar2.png" class="ski" alt="">
+  </div>
+  <div class=" banner">
+    
+    <span style="width: 100px; height: 20; color: white; font-weight: bold;">겨울에도</span>
+    <a href="/" class="logo" title="여행어때">여행어때</a>
+  </div>
+
+  <div style="padding: 100px;"></div>
+
+    <div id="main">
+      <P  style="width: 100%; background-color: rgb(248, 255, 212);">여행어때 OPEN 채팅방</P>
+      <div id="chat">
+        <!-- 채팅 메시지 영역 -->
+      </div>
+      <input type="text" class="text" id="test" placeholder="메시지를 입력해주세요..">
+      <button class="chat-btn" onclick="send();">전송</button>
+    </div>
+
+</body>
+
+</html>

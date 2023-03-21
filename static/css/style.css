@@ -1,0 +1,448 @@
+@font-face {
+  font-family: 'RIDIBatang';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/RIDIBatang.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.map {
+  background-image: url(../img/map.png);
+  height: 1000px;
+  width: 800px;
+  position: absolute;
+  /* top: 50%; */
+  left: 50%;
+  transform: translate(-50%, 0%);
+
+}
+
+.main-div {
+  height: 1000px;
+}
+
+.seoul-btn {
+  position: absolute;
+  top: 200px;
+  left: 260px;
+
+}
+
+.seoul-text {
+  position: absolute;
+  font-size: 11px;
+  font-weight: bold;
+  top: 260px;
+  left: 300px;
+
+  display: none;
+}
+
+.seoul-btn:hover+.seoul-text {
+  transform: scale(1.5);
+  display: block;
+  color: white;
+  text-shadow: -1px 0px black, 0px 1px black, 1px 0px black, 0px -1px black;
+}
+
+.jejudo-btn {
+  position: absolute;
+  top: 810px;
+  left: 190px;
+  z-index: 1;
+}
+
+.jejudo-text {
+  position: absolute;
+  font-size: 11px;
+  font-weight: bold;
+  top: 870px;
+  left: 220px;
+  z-index: 1;
+  display: none;
+}
+
+.jejudo-btn:hover+.jejudo-text {
+  transform: scale(1.5);
+  display: block;
+  color: white;
+  text-shadow: -1px 0px black, 0px 1px black, 1px 0px black, 0px -1px black;
+}
+
+.gangwon-btn {
+  position: absolute;
+  top: 150px;
+  left: 370px;
+  z-index: 1;
+}
+
+.gangwon-text {
+  position: absolute;
+  font-size: 11px;
+  font-weight: bold;
+  top: 210px;
+  left: 400px;
+  z-index: 2;
+  display: none;
+}
+
+.gangwon-btn:hover+.gangwon-text {
+  transform: scale(1.5);
+  display: block;
+  color: white;
+  text-shadow: -1px 0px black, 0px 1px black, 1px 0px black, 0px -1px black;
+}
+
+.chungbuk-btn {
+  position: absolute;
+  top: 350px;
+  left: 320px;
+  z-index: 1;
+}
+
+.chungbuk-text {
+  position: absolute;
+  font-size: 11px;
+  font-weight: bold;
+  top: 410px;
+  left: 360px;
+  z-index: 2;
+  display: none;
+}
+
+.chungbuk-btn:hover+.chungbuk-text {
+  transform: scale(1.5);
+  display: block;
+  color: white;
+  text-shadow: -1px 0px black, 0px 1px black, 1px 0px black, 0px -1px black;
+}
+
+.chungnam-btn {
+  position: absolute;
+  top: 350px;
+  left: 220px;
+  z-index: 1;
+}
+
+.chungnam-text {
+  position: absolute;
+  font-size: 11px;
+  font-weight: bold;
+  top: 410px;
+  left: 260px;
+  z-index: 2;
+  display: none;
+}
+
+.chungnam-btn:hover+.chungnam-text {
+  transform: scale(1.5);
+  display: block;
+  color: white;
+  text-shadow: -1px 0px black, 0px 1px black, 1px 0px black, 0px -1px black;
+}
+
+.jeonbuk-btn {
+  position: absolute;
+  top: 550px;
+  left: 250px;
+  z-index: 1;
+}
+
+.jeonbuk-text {
+  position: absolute;
+  font-size: 11px;
+  font-weight: bold;
+  top: 610px;
+  left: 270px;
+  z-index: 2;
+  display: none;
+}
+
+.jeonbuk-btn:hover+.jeonbuk-text {
+  transform: scale(1.5);
+  display: block;
+  color: white;
+  text-shadow: -1px 0px black, 0px 1px black, 1px 0px black, 0px -1px black;
+}
+
+.degu-btn {
+  position: absolute;
+  top: 400px;
+  left: 450px;
+  z-index: 1;
+}
+
+.degu-text {
+  position: absolute;
+  font-size: 11px;
+  font-weight: bold;
+  top: 460px;
+  left: 450px;
+  z-index: 2;
+  display: none;
+}
+
+.degu-btn:hover+.degu-text {
+  transform: scale(1.5);
+  display: block;
+  color: white;
+  text-shadow: -1px 0px black, 0px 1px black, 1px 0px black, 0px -1px black;
+}
+
+.busan-btn {
+  position: absolute;
+  top: 550px;
+  left: 450px;
+  z-index: 1;
+}
+
+.busan-text {
+  position: absolute;
+  font-size: 11px;
+  font-weight: bold;
+  top: 610px;
+  left: 450px;
+  z-index: 2;
+  display: none;
+}
+
+.busan-btn:hover+.busan-text {
+  transform: scale(1.5);
+  display: block;
+  color: white;
+  text-shadow: -1px 0px black, 0px 1px black, 1px 0px black, 0px -1px black;
+}
+
+.login-div {
+  background-color: #f3f7fe;
+  border-color: #B2CCFF;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px 10px 30px 10px;
+  border-radius: 20px;
+}
+
+.login-input {
+  border: 2px solid gray;
+  width: 400px;
+  height: 50px;
+}
+
+.login-btn {
+  background-color: #B2CCFF;
+  border: 3px solid #B2CCFF;
+  width: 410px;
+  height: 50px;
+  color: white;
+  font-weight: bold;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.login-logo {
+  line-height: 150px;
+  width: 800px;
+  font-family: 'CWDangamAsac-Bold';
+  font-size: 70px;
+  color: #B2CCFF;
+  text-decoration-line: none;
+  text-align: center;
+  text-shadow: 6px 4px 1px rgb(86, 87, 88);
+
+}
+
+.signup-form {
+  background-color: #f3f7fe;
+  padding: 10px 10px 30px 10px;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 20px;
+}
+
+.signup-p {
+  color: #B2CCFF;
+  font-weight: bold;
+  font-size: 30px;
+}
+#profile {
+  display: flex;
+  float: left;
+}
+#profileImg {
+  display: flex;
+  float: left;
+  width: 200px;
+}
+#preview {
+  display: flex;
+  float: left;
+  margin-right: 5px;
+}
+
+#profile-div {
+  display: flex;
+  align-items: center;
+}
+
+#profileImg {
+  width: 200px;
+}
+
+#preview {
+  display: flex;
+  margin-right: 10px;
+}
+
+.table {
+  /* border-collapse: collapse; */
+  width: 100%;
+  text-align: center;
+}
+
+.table td {
+  font-family: 'RIDIBatang';
+}
+
+.table-btn {
+  border-color: white;
+  background-color: #B2CCFF;
+  color: white;
+  height: 40px;
+  font-family: 'RIDIBatang';
+}
+
+.comment-name {
+  text-decoration-line: none;
+  font-weight: bold;
+  color: #000;
+}
+
+.comment-form {
+  padding: 0 20px;
+  text-align: end;
+}
+
+.comment-form>a {
+  cursor: pointer;
+}
+
+.second.comment-form {
+  margin-left: 10%;
+  text-align: end;
+}
+
+.first-comment {
+  padding: 0 20px;
+}
+
+.second-comment {
+  padding: 0 20px 0 40px;
+}
+
+.cancle-btn {
+  border-color: white;
+  background-color: darkgrey;
+  color: white;
+  height: 40px;
+  font-family: 'RIDIBatang';
+
+}
+
+.star-btn {
+  border: 1px solid #B2CCFF;
+  background-color: white;
+  color: #B2CCFF;
+  height: 40px;
+  font-family: 'RIDIBatang';
+}
+
+#title {
+  width: 450px;
+}
+
+#content {
+  width: 450px;
+  height: 300px;
+}
+
+.list {
+  text-decoration-line: none;
+  color: black;
+}
+
+.center {
+  background-color: #B2CCFF;
+  position: fixed;
+  top: 200px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+/* index.ejs popup */
+.popup {
+  position: absolute;
+  top: 200px;
+  left: 300px;
+  width: 500px;
+  height: 600px;
+  z-index: 10;
+}
+
+.popup-img {
+  width: 100%;
+}
+
+.popup .popup-check {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 10px;
+  background-color: black;
+  color: white;
+}
+
+/* .star-rating {
+  display: flex;
+  flex-direction: row-reverse;
+  font-size: 2.25rem;
+  line-height: 2.25rem;
+  justify-content: space-around;
+  padding: 0 0.2em;
+  text-align: center;
+  width: 5em;
+}
+.star-rating input {
+  display: none;
+}
+.star-rating label{
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke-width: 2.3px;
+  -webkit-text-stroke-color: #2b2a29;
+  cursor: pointer;
+}
+.star-rating :checked ~ label {
+  -webkit-text-fill-color: red;
+}
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+  -webkit-text-fill-color: yellow;
+} */
+
+.comment-box {
+  width: 100%;
+}
+
+.comment-img {
+  width: 30px;
+  height: 30px;
+}
+
+.p-4 p,
+.p-4 a {
+  font-family: 'RIDIBatang';
+}

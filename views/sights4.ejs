@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>충남/대전 | 여행어때</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="shortcut icon" href="../static/img/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="../static/css/common.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+     <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+  crossorigin="anonymous"></script>
+</head>
+<body>
+  <%-include('./header.ejs', {islogin, iskakao})%>
+  
+  <div class="div-padding">
+    <div class="row g-0 bg-light position-relative w-50 mx-auto">
+      <div class="col-md-6 mb-md-0 p-md-4 ">
+        <img src="../static/img/Daejeon.jpg" class="w-100" alt="seoul">
+      </div>
+      <div class="col-md-6 p-4 ps-md-0">
+        <h5 class="mt-0 fw-bold">대전Daejeon</h5>
+        <p>다양한 테마 여행이 가능한 대전광역시.
+          맨발로 걸을 수 있는 계족산 황톳길은 온몸으로 자연을 느끼는 여행을 할 수 있으며,
+          대전 근현대 전시관과 남간정사 등 대전에 있는 역사 문화 공간을 코스로 잡아도 좋다.
+          아이들이 좋아하는 동물원이 있는 오월드와 가볍게 산책하기 좋은 유림공원도 있어
+          주말 가족 나들이 코스로도 손색이 없다.</p>
+          <a href="https://travel.naver.com/domestic/07/guide/all" class="stretched-link align-middle">대전 관광지 둘러보기</a>
+      </div>
+    </div>
+    <br>
+    <div class="row g-0 bg-light position-relative w-50 mx-auto">
+      <div class="col-md-6 mb-md-0 p-md-4">
+        <img src="../static/img/Buyeo.jpg" class="w-100" alt="seoul">
+      </div>
+      <div class="col-md-6 p-4 ps-md-0">
+        <h5 class="mt-0 fw-bold">부여Buyeo</h5>
+        <p>
+          백제의 역사가 잠들어 있는 부여. 백제 권역에 흩어진 문화유물을 전시하고 있는 국립부여박물관과 백제 문화 단지,
+          부여 정림사지는 부여에서 빼놓을 수 없는 명소이다.
+          백제시대의 별궁 연못이었던 궁남지에서는 매년 7월이면 서동연꽃축제가 열려 궁남지의 멋을 더해준다.
+        </p>
+          <a href="https://travel.naver.com/domestic/15760/guide/all" class="stretched-link">부여 관광지 둘러보기</a>
+      </div>
+    </div>
+    <br>
+    <div class="row g-0 bg-light position-relative w-50 mx-auto">
+      <div class="col-md-6 mb-md-0 p-md-4">
+        <img src="../static/img/Taean.jpg" class="w-100" alt="seoul">
+      </div>
+      <div class="col-md-6 p-4 ps-md-0">
+        <h5 class="mt-0 fw-bold">태안Taean</h5>
+        <p>
+          사계절 내내 축제를 즐길 수 있는 충남 태안.
+          연간 내내 즐길 수 있는 빛 축제를 비롯해 4~5월에는 튤립축제가 7~8월에는 백합꽃 축제.
+          9~10월에는 가을꽃축제 등 계절 색을 그대로 느낄 수 있는 곳으로 태안만한 곳이 없다.
+          세월을 등에 업고 만들어진 신두리 해안사구도 태안에서만 볼 수 있는 자연 경관이다.
+        </p>
+          <a href="https://travel.naver.com/domestic/15825/guide/all" class="stretched-link">태안 관광지 둘러보기</a>
+      </div>
+    </div>
+  </div>
+  
+  <%-include('./footer.ejs')%>
+</body>
+</html>

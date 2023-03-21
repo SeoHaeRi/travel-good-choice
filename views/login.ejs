@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>로그인 | 여행어때</title>
+  <link rel="shortcut icon" href="../static/img/favicon.ico">
+  <link rel="stylesheet" type="text/css" href="../static/css/common.css">
+  <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+</head>
+</head>
+
+<body>
+  <div class="snowflakes" aria-hidden="true">
+    <div class="snowflake">❅</div>
+    <div class="snowflake">❅</div>
+    <div class="snowflake">❆</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❅</div>
+    <div class="snowflake">❆</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❆</div>
+    <div class="snowflake">❆</div>
+    <div class="snowflake">❄</div>
+  </div>
+
+  <div class="login-div">
+    <a href="/" class="login-logo" title="여행어때">여행어때</a>
+    <form id="login-form">
+      <br>
+      <input class="login-input" type="text" name="id" placeholder="아이디" required>
+      <br>
+      <br>
+      <input class="login-input" type="password" name="pw" placeholder="비밀번호" required>
+      <br>
+      <br>
+      <button class="login-btn" type="button" onclick="login();">로그인</button>
+      <br>
+      <br>
+      <span id="exa" style="color: red;"></span>
+      <br>
+      <br>
+      <span>아직 회원이 아니신가요?</span>&nbsp;
+      <a href="/signup" style="text-decoration-line : none; color: blue;">회원가입</a>
+      <span>하러가기</span>
+    </form>
+    <br>
+    <a href="/user/login/kakao"><img src="/static/img/kakao_login_medium_wide.png" id="login-kakao" alt="카카오 로그인"></a>
+    <!-- <br>
+    <br>
+    <a href="javascript:void(0);" onclick="findPw();return false;">비밀번호 찾기</a> -->
+  </div>
+
+  <script>
+    function login() {
+      let form = document.getElementById("login-form");
+      axios({
+        method: 'post',
+        url: '/user/login',
+        data: {
+          id: form.id.value,
+          pw: form.pw.value
+        }
+      }).then((res) => {
+        if (res.data) {
+          document.location.href = '/';
+        } else {
+          var exa = document.getElementById('exa');
+          exa.innerText = "아이디 또는 비밀번호를 다시 확인해주세요.";
+          form.reset();
+        }
+      })
+    }
+    function register() {
+      document.location.href = "/signup";
+    }
+  </script>
+
+</body>
+
+</html>
