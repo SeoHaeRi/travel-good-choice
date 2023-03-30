@@ -1,32 +1,33 @@
 # TravelGoodChoice (여행 커뮤니티)
 
 📆 **프로젝트 진행기간 : 2022/12/10 ~ 2022/12/28**
+## 기술 스택
 
-> # 1.서비스 소개 
+| Backend |
+| :--------: |
+|<img src="https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E" alt="JavaScript"><img src="https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white" alt="NodeJS"> <img src="https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB" alt="ExpressJS"> <img src="https://img.shields.io/badge/sequelize-blue?style=for-the-badge&logo=sequelize&logoColor=white" alt="sequelize"> <img src="https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL">|
 
+## ERD
+<img width="530" alt="image" src="https://user-images.githubusercontent.com/62414262/228734702-af10cefc-0dac-4db5-bfb9-8332049662c7.png">
 
-<img width="775" alt="스크린샷 2023-02-13 오후 3 27 27" src="https://user-images.githubusercontent.com/87747459/218386358-c55063fd-429b-4536-a25d-47c90708282d.png">
+## 구현 기능
+- ERD(관계형 모델링 설계) 설계
+- 사용자 로그인 API 구현
+    - `Session` 로그인 판별
+    - `OAuth 2.0` 소셜 로그인
+- `FileReader` 프로필 사진 미리보기
+- `MySQL, Sequelize` 댓글 API 구현
+    - `EJS, jQuery` 댓글 마크업 구현
 
-> # 3. 페이지 기능 소개
+## 회고
 
-## 로그인, 회원가입
-<img width="758" alt="스크린샷 2023-02-13 오후 3 32 16" src="https://user-images.githubusercontent.com/87747459/218387159-6e42cb05-75e0-4966-a155-8d91392a6f1a.png">
-<img width="757" alt="스크린샷 2023-02-13 오후 3 32 29" src="https://user-images.githubusercontent.com/87747459/218387198-f469af10-c533-46e9-979b-2aedf185bae1.png">
-<img width="759" alt="스크린샷 2023-02-13 오후 3 32 36" src="https://user-images.githubusercontent.com/87747459/218387216-17480cdf-d204-4df1-b501-54b57b58a973.png">
+▷게시글 삭제 시 해당 댓글, 답글도 같이 삭제되도록 외래키 설정
 
-## 쿠키 & 로그인 세션
+▷로그아웃 시에 일반 로그인과 소셜 로그인이 다르게 동작하므로 세션 값으로 판별하였다
 
-<img width="774" alt="스크린샷 2023-02-13 오후 3 32 58" src="https://user-images.githubusercontent.com/87747459/218387277-4e8d304f-09f0-4e0c-b86c-75ccda57705d.png">
-<img width="745" alt="스크린샷 2023-02-13 오후 3 33 09" src="https://user-images.githubusercontent.com/87747459/218387309-22a62aa7-58a4-4974-9632-b241f090ceec.png">
+▷소셜 로그인을 하는 경우 닉네임 설정을 직접 하지 못하기 때문에 중복인 경우에 랜덤 닉네임 api 통해 새로 생성
 
+▷공용 PC 환경에서 사용하는 경우를 고려해 서비스와 카카오 계정 둘다 로그아웃 가능하게 함, 개인PC 사용자는 서비스만 로그아웃 할 경우 다음에 카카오 로그인 할 때 카카오 계정 로그인 불필요
 
+▷이미지 없는 경우 기본 이미지 디폴트 값으로 처리
 
-### ERD
-<img width="746" alt="스크린샷 2023-02-13 오후 3 26 48" src="https://user-images.githubusercontent.com/87747459/218386243-31adf653-932a-4ca5-8ca5-856593266fc6.png">
-
-## 사용한 기술 스택
-<img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white">
-<img src="https://img.shields.io/badge/css3-1572B6?style=for-the-badge&logo=html5&logoColor=white">
-<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=html5&logoColor=white">
-<img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=html5&logoColor=white">
-[추가 및 정리 예정]
