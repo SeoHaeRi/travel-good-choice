@@ -15,6 +15,13 @@
     국내 여행 커뮤니티 사이트<br>
 여행지 정보를 볼 수 있고 커뮤니티에서 소통할 수 있다
 </p>
+
+| 회원가입, 로그인 | 댓글 |
+| :--------: | :--------: |
+| ![ezgif com-optimize (2)](https://user-images.githubusercontent.com/62414262/228740999-2b31f7f2-4cbf-4b8b-b835-a3b6704803de.gif) | ![ezgif com-optimize (3)](https://user-images.githubusercontent.com/62414262/228741677-39174441-d958-4dda-a759-0f33ad40254a.gif)|
+
+
+
 ## 기술 스택
 
 | Backend |
