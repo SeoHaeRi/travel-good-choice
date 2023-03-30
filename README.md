@@ -1,6 +1,20 @@
 # TravelGoodChoice (여행 커뮤니티)
 
 📆 **프로젝트 진행기간 : 2022/12/10 ~ 2022/12/28**
+## 메인 화면
+<p align="center">
+  <br>
+  <img width="1908" alt="image" src="https://user-images.githubusercontent.com/62414262/228735154-3bc08fa2-0365-4ea2-b516-6e2b0292249b.png">
+
+  <br>
+</p>
+
+## 프로젝트 소개
+
+<p align="justify">
+    국내 여행 커뮤니티 사이트<br>
+여행지 정보를 볼 수 있고 커뮤니티에서 소통할 수 있다
+</p>
 ## 기술 스택
 
 | Backend |
